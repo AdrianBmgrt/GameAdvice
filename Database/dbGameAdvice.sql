@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.5.62, for Win64 (AMD64)
 --
--- Host: localhost    Database: dbGameAdvice
+-- Host: localhost    Database: GameAdvice
 -- ------------------------------------------------------
--- Server version	5.5.5-10.3.31-MariaDB-0ubuntu0.20.04.1
+-- Server version	5.5.5-10.3.32-MariaDB-0ubuntu0.20.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,7 +26,7 @@ CREATE TABLE `Categorie` (
   `idCategorie` int(11) NOT NULL AUTO_INCREMENT,
   `nom` text DEFAULT NULL,
   PRIMARY KEY (`idCategorie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +35,7 @@ CREATE TABLE `Categorie` (
 
 LOCK TABLES `Categorie` WRITE;
 /*!40000 ALTER TABLE `Categorie` DISABLE KEYS */;
+INSERT INTO `Categorie` VALUES (1,'FPS'),(2,'RPG'),(3,'MMORPG'),(4,'MOBA'),(5,'Battle Royal'),(6,'Aventure'),(7,'Survival Horror');
 /*!40000 ALTER TABLE `Categorie` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,7 +54,7 @@ CREATE TABLE `Games` (
   `prix` int(11) DEFAULT NULL,
   `image` text DEFAULT NULL,
   PRIMARY KEY (`idGame`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,6 +63,7 @@ CREATE TABLE `Games` (
 
 LOCK TABLES `Games` WRITE;
 /*!40000 ALTER TABLE `Games` DISABLE KEYS */;
+INSERT INTO `Games` VALUES (1,'Halo Infinite','2021-07-31 22:00:00','Halo Infinite est un FPS développé par 343 Industries. L\'épisode fait la suite directe de Halo 5. ',49,'haloInfinite.jpg'),(2,'Légendes Pokémon : Arceus','2024-03-31 22:00:00','Légendes Pokémon : Arceus est un jeu vidéo de rôle de la série Pokémon développé par Game Freak et édité par The Pokémon Company et Nintendo.',44,'PokemonLegendsArceus.jpg'),(3,'League of Legends','2011-03-09 23:00:00','League of Legends est un jeu vidéo sorti en 2009 de type arène de bataille en ligne, free-to-play,',0,'LeagueOfLegends.jpg'),(4,'Apex Legends','2019-04-01 22:00:00','Apex Legends est un jeu vidéo de type battle royale développé par Respawn Entertainment et édité par Electronic Arts.',0,'apex.jpg'),(5,'Tales of Arise','2021-09-08 22:00:00','ales of Arise est un jeu vidéo d\'action-RPG développé et édité par Bandai Namco Entertainment.',72,'TaleOfArise.jpg'),(6,'Eve Online','2003-06-04 22:00:00','Eve Online est un jeu en ligne massivement multijoueur persistant se déroulant dans l\'espace, développé par la société islandaise CCP',0,'eveOnline.jpg'),(7,'The Evil Within 2','2018-01-08 23:00:00','The Evil Within 2 est un jeu vidéo de tir à la troisième personne de type survival horror développé par Tango Gameworks ',50,'theEvilWithing.jpg');
 /*!40000 ALTER TABLE `Games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,6 +90,7 @@ CREATE TABLE `LiaisonGameCategorie` (
 
 LOCK TABLES `LiaisonGameCategorie` WRITE;
 /*!40000 ALTER TABLE `LiaisonGameCategorie` DISABLE KEYS */;
+INSERT INTO `LiaisonGameCategorie` VALUES (1,1),(2,6),(3,4),(4,5),(5,2),(6,3),(7,7);
 /*!40000 ALTER TABLE `LiaisonGameCategorie` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +184,7 @@ LOCK TABLES `Users` WRITE;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'dbGameAdvice'
+-- Dumping routines for database 'GameAdvice'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -193,4 +196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-27 13:49:06
+-- Dump completed on 2022-02-24  8:34:19
