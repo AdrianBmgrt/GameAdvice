@@ -4,9 +4,8 @@ function validate() {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     if (email == "Formget@gmail.com" && password == "formget#123") {
-        alert("Login successfully");
-        window.location = "index.html"; // Redirecting to other page.
-        return false;
+        window.alert("Login successfully");
+        location.replace('index.html'); // Redirecting to other page.
     } else {
         attempt--; // Decrementing by one.
         alert("You have left " + attempt + " attempt;");
@@ -15,7 +14,6 @@ function validate() {
             document.getElementById("email").disabled = true;
             document.getElementById("password").disabled = true;
             document.getElementById("submit").disabled = true;
-            return false;
         }
     }
 }
