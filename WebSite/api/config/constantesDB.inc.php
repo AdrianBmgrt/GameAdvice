@@ -8,8 +8,8 @@
 */
 
 define("HOSTNAME", "localhost");
-define("DBNAME", "dbgameadvice");
+define("DBNAME", "GameAdvice");
 define("DBUSER", "root");
-define("PASSWORD", "owowhatsthis");
+define("PASSWORD", "ge19se04");
 
 ?>

@@ -1,8 +1,9 @@
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://jsonplaceholder.typicode.com/users/1');
+xhr.open('GET', 'http://localhost/GameAdvice/WebSite/api/user/read.php');
 xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
-        alert(xhr.responseText);
+        var reponse = JSON.parse(xhr.responseText);
+        console.log(reponse.email);
     }
 };
 xhr.send();
