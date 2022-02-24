@@ -89,14 +89,14 @@
                         <h3>Login</h3>
                         <form id="form_id" method="post" name="myform">
                             <div class="input__item">
-                                <input type="text" placeholder="Email address" name="email" id="email">
+                                <input type="text" placeholder="Email address" name="email" id="email" required>
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Password" name="password" id="password">
+                                <input type="text" placeholder="Password" name="password" id="password" required>
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn" id="submit">Login Now</button>
+                            <button type="submit" class="site-btn" id="submit" onclick="validate()">Login Now</button>
                         </form>
                     </div>
                 </div>
