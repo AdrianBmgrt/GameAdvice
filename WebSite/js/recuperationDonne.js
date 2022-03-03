@@ -12,6 +12,7 @@ function deconnection() {
 }
 
 
+// FAUT FINIR CAR CE TRUC NE MACHE PAS çA ME SOULE BEAUCOUP !!!!!!
 function login() {
     var email = document.getElementById("email");
     var password = document.getElementById(" password")
@@ -24,6 +25,7 @@ function login() {
             setCookie("userIsConnected", userInfos, 7);
             alert(userInfos);
             alert(document.cookie);
+            console.log(document.cookie);
 
             //location.replace("index.html");
 
