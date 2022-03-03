@@ -11,7 +11,7 @@ require "constantesDB.inc.php";
  * Connecteur de la base de données du .
  * Le script meurt (die) si la connexion n'est pas possible.
  * @staticvar PDO $dbc
- * @return \PDO
+ * @return \PDOO
  */
 function dbGameAdvice()
 {
@@ -43,7 +43,7 @@ function readGame($idGame)
 {
     static $ps = null;
     $sql = 'SELECT nom, description, dateDeSortie, prix, image';
-    $sql .= ' FROM dbGameAdvice.Games';
+    $sql .= ' FROM GameAdvice.Games';
     $sql .= ' WHERE idGame = :IDGAME';
 
     if ($ps == null) {
@@ -65,7 +65,7 @@ function readGames($from = 0, $offset = 50)
 {
     static $ps = null;
     $sql = 'SELECT g.nom, g.description, g.dateDeSortie, g.prix, g.image';
-    $sql .= ' FROM dbGameAdvice.Games as g';
+    $sql .= ' FROM GameAdvice.Games as g';
     $sql .= ' ORDER BY nom ASC LIMIT :FROM,:OFFSET;';
 
     if ($ps == null) {
@@ -87,7 +87,7 @@ function readUsers($from = 0, $offset = 50)
 {
     static $ps = null;
     $sql = 'SELECT u.nom, u.prenom, u.email, u.mdp, u.photoProfil';
-    $sql .= ' FROM dbGameAdvice.Users as u';
+    $sql .= ' FROM GameAdvice.Users as u';
     $sql .= ' ORDER BY nom ASC LIMIT :FROM,:OFFSET;';
 
     if ($ps == null) {
@@ -115,7 +115,7 @@ function readUsers($from = 0, $offset = 50)
 function createUser($nom, $prenom, $email, $mdp, $photoProfil)
 {
     static $ps = null;
-    $sql = "INSERT INTO `dbGameAdvice`.`Games` (`nom`, `prenom`, `email`, `mdp`, `photoProfil`) ";
+    $sql = "INSERT INTO `GameAdvice `.`Games` (`nom`, `prenom`, `email`, `mdp`, `photoProfil`) ";
     $sql .= "VALUES (:NOM, :PRENOM, :EMAIL, :MDP, :PHOTOPROFIL)";
     if ($ps == null) {
         $ps = dbGameAdvice()->prepare($sql);
