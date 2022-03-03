@@ -1,6 +1,6 @@
 <?php
 
-require "../Website/config/boiteaoutils.inc.php";
+require "../config/boiteaoutils.inc.php";
 
 // required headers
 header("Access-Control-Allow-Origin: *");
