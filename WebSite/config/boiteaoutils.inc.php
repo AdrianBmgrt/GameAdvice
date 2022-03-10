@@ -130,7 +130,7 @@ function readUsers()
 function createUser($nom, $prenom, $email, $mdp, $photoProfil)
 {
     static $ps = null;
-    $sql = "INSERT INTO `dbGameAdvice `.`Users` (`nom`, `prenom`, `email`, `mdp`, `photoProfil`) ";
+    $sql = "INSERT INTO `dbGameAdvice`.`Users` (`nom`, `prenom`, `email`, `mdp`, `photoProfil`) ";
     $sql .= "VALUES (:NOM, :PRENOM, :EMAIL, :MDP, :PHOTOPROFIL)";
     if ($ps == null) {
         $ps = dbGameAdvice()->prepare($sql);
@@ -143,6 +143,43 @@ function createUser($nom, $prenom, $email, $mdp, $photoProfil)
         $ps->bindParam(':MDP', $mdp, PDO::PARAM_STR);
         $ps->bindParam(':PHOTOPROFIL', $photoProfil, PDO::PARAM_STR);
         $answer = $ps->execute();
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+    return $answer;
+}
+
+/**
+ * Met à jour une média existante 
+ * @param mixed $idPost
+ * @param mixed $commentaire
+ * @param mixed $modificationDate 
+ * @return bool 
+ */
+function updateUser($idUser, $nom, $prenom, $email, $mdp, $photoProfil)
+{
+    static $ps = null;
+
+    $sql = "UPDATE `dbGameAdvice`.`Users` SET ";
+    $sql .= "`nom` = :NOM, ";
+    $sql .= "`prenom` = :PRENOM, ";
+    $sql .= "`email` = :EMAIL, ";
+    $sql .= "`mdp` = :MDP, ";
+    $sql .= "`photoProfil` = :PHOTOPROFIL ";
+    $sql .= "WHERE (`idUser` = :IDUSER)";
+    if ($ps == null) {
+        $ps = dbGameAdvice()->prepare($sql);
+    }
+    $answer = false;
+    try {
+        $ps->bindParam(':IDUSER', $idUser, PDO::PARAM_INT);
+        $ps->bindParam(':NOM', $nom, PDO::PARAM_STR);
+        $ps->bindParam(':PRENOM', $prenom, PDO::PARAM_STR);
+        $ps->bindParam(':EMAIL', $email, PDO::PARAM_STR);
+        $ps->bindParam(':MDP', $mdp, PDO::PARAM_STR);
+        $ps->bindParam(':PHOTOPROFIL', $photoProfil, PDO::PARAM_STR);
+        $ps->execute();
+        $answer = ($ps->rowCount() > 0);
     } catch (PDOException $e) {
         echo $e->getMessage();
     }
@@ -252,7 +289,7 @@ function deleteUser($idUser)
     }
     $answer = false;
     try {
-        $ps->bindParam(':IDGAME', $idUser, PDO::PARAM_INT);
+        $ps->bindParam(':IDUSER', $idUser, PDO::PARAM_INT);
         $ps->execute();
         $answer = ($ps->rowCount() > 0);
     } catch (PDOException $e) {

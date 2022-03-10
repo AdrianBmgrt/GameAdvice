@@ -44,11 +44,6 @@ switch ($request_method) {
                 "status_message" => "User Addition Failed."
             );
         }
-        var_dump($nom);
-        var_dump($prenom);
-        var_dump($email);
-        var_dump($mdp);
-        var_dump($photoProfil);
         ReturnResponse($response);
         break;
     case 'PUT':
@@ -62,26 +57,26 @@ switch ($request_method) {
         $mdp = $data->mdp;
         $photoProfil = $data->photoProfil;
 
-        if (updateGame($id, $nom, $prenom, $email, $mdp, $photoProfil)) {
+        if (updateUser($id, $nom, $prenom, $email, $mdp, $photoProfil)) {
             $response = array(
-                "status_message" => "Game updated Successfully."
+                "status_message" => "User updated Successfully."
             );
         } else {
             $response = array(
-                "status_message" => "Game update Failed."
+                "status_message" => "User update Failed."
             );
         }
         ReturnResponse($response);
         break;
     case 'DELETE':
         $id = intval($_GET["id"]);
-        if (deleteGame($id)) {
+        if (deleteUser($id)) {
             $response = array(
-                "status_message" => "Game Deleted Successfully."
+                "status_message" => "User Deleted Successfully."
             );
         } else {
             $response = array(
-                "status_message" => "Game Deletion Failed."
+                "status_message" => "User Deletion Failed."
             );
         }
         ReturnResponse($response);
