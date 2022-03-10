@@ -6,7 +6,7 @@ function setCookie(name, content, expireDays) { //Fonction empruntée à w3schoo
 }
 
 function deconnection() {
-  //  alert(document.cookie);
+    //  alert(document.cookie);
     document.cookie = "userIsConnected=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
     alert(document.cookie);
 }
@@ -24,13 +24,12 @@ function apiGET() {
                 if (data[index].email == email && data[index].mdp == password) {
                     let userInfos = [data[index].nom, data[index].prenom, data[index].email, data[index].mdp, data[index].photoProfil];
                     setCookie("userIsConnected", userInfos, 7);
-                }
-                else{
+                } else {
                     console.log("erreur");
                 }
-                
+
             }
-          // alert(document.cookie);
+            // alert(document.cookie);
             //location.replace("profil.html");
 
         },
