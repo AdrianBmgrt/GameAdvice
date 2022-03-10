@@ -13,10 +13,12 @@ function returnResponse($response)
 
 switch ($request_method) {
     case 'GET':
-        if (isset($_GET["description"])) {
-            var_dump($_GET["description"]);
+        /*
+        $email = $_GET["email"];
+        if (!empty($_GET["email"])) {
+            returnResponse(readUserByEmail($email));
         }
-
+*/
         // Retrive Products
         if (!empty($_GET["id"])) {
             $id = intval($_GET["id"]);

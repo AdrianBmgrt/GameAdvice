@@ -61,6 +61,33 @@ function readGame($idGame)
     return $answer;
 }
 
+/*
+ * Retourne les données d'un pokémon en fonction de son idGame
+ * @param mixed $idGame
+ * @return false|array 
+ */
+function readUserByEmail($email)
+{
+    static $ps = null;
+    $sql = 'SELECT u.nom, u.prenom, u.email, u.mdp, u.photoProfil ';
+    $sql .= ' FROM dbGameAdvice.Users as u ';
+    $sql .= ' WHERE email = :EMAIL';
+
+    if ($ps == null) {
+        $ps = dbGameAdvice()->prepare($sql);
+    }
+    $answer = false;
+    try {
+        $ps->bindParam(':EMAIL', $email, PDO::PARAM_INT);
+
+        if ($ps->execute())
+            $answer = $ps->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+    return $answer;
+}
+
 function readGames()
 {
     static $ps = null;

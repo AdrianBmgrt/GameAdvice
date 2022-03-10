@@ -6,27 +6,31 @@ function setCookie(name, content, expireDays) { //Fonction empruntée à w3schoo
 }
 
 function deconnection() {
-    alert(document.cookie);
+  //  alert(document.cookie);
     document.cookie = "userIsConnected=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
     alert(document.cookie);
 }
-
-
 
 function apiGET() {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     $.ajax({
         type: "GET",
-        url: `http://localhost/GameAdvice/WebSite/api/users.php?email=${email}&mdp=${password}`,
+        url: `http://localhost/GameAdvice/WebSite/api/users.php`,
         cache: false,
         success: function(data) {
 
-            let userInfos = [data[0].nom, data[0].prenom, data[0].email, data[0].mdp, data[0].photoProfil];            
-
-            setCookie("userIsConnected", userInfos, 7);
-
-            alert(document.cookie);
+            for (let index = 0; index < data.length; index++) {
+                if (data[index].email == email && data[index].mdp == password) {
+                    let userInfos = [data[index].nom, data[index].prenom, data[index].email, data[index].mdp, data[index].photoProfil];
+                    setCookie("userIsConnected", userInfos, 7);
+                }
+                else{
+                    console.log("erreur");
+                }
+                
+            }
+          // alert(document.cookie);
             //location.replace("profil.html");
 
         },
