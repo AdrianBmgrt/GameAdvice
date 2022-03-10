@@ -18,11 +18,11 @@ function apiGET() {
     var password = document.getElementById("password").value;
     $.ajax({
         type: "GET",
-        url: `http://localhost/GameAdvice/WebSite/login.html?email=${email}&mdp=${password}`,
+        url: `http://localhost/GameAdvice/WebSite/api/users.php?email=${email}&mdp=${password}`,
         cache: false,
         success: function(data) {
 
-            let userInfos = [data[0].idUser, data[0].nom, data[0].email, data[0].mdp];
+            let userInfos = [data[0].nom, data[0].prenom, data[0].email, data[0].mdp, data[0].photoProfil];            
 
             setCookie("userIsConnected", userInfos, 7);
 
