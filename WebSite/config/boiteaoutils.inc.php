@@ -194,7 +194,7 @@ function updateGame($idGame, $nom, $dateDeSortie, $description, $prix, $image)
     $sql .= "`dateDeSortie` = :DATEDESORTIE, ";
     $sql .= "`description` = :DESCRIPTION, ";
     $sql .= "`prix` = :PRIX, ";
-    $sql .= "`image` = :IMAGE, ";
+    $sql .= "`image` = :IMAGE ";
     $sql .= "WHERE (`idGame` = :IDGAME)";
     if ($ps == null) {
         $ps = dbGameAdvice()->prepare($sql);
@@ -205,7 +205,7 @@ function updateGame($idGame, $nom, $dateDeSortie, $description, $prix, $image)
         $ps->bindParam(':NOM', $nom, PDO::PARAM_STR);
         $ps->bindParam(':DATEDESORTIE', $dateDeSortie, PDO::PARAM_STR);
         $ps->bindParam(':DESCRIPTION', $description, PDO::PARAM_STR);
-        $ps->bindParam(':PRIX', $prix, PDO::PARAM_STR);
+        $ps->bindParam(':PRIX', $prix, PDO::PARAM_INT);
         $ps->bindParam(':IMAGE', $image, PDO::PARAM_STR);
         $ps->execute();
         $answer = ($ps->rowCount() > 0);

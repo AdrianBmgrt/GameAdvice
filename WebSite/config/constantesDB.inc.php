@@ -10,6 +10,6 @@
 define("HOSTNAME", "localhost");
 define("DBNAME", "dbGameAdvice");
 define("DBUSER", "root");
-define("PASSWORD", "Superr");
+define("PASSWORD", "owowhatsthis");
 
 ?>

@@ -1,3 +1,5 @@
 RewriteEngine On
 RewriteRule "^games/?$" "games.php" [NC,L]
 RewriteRule "^games/([0-9]+)/?$" "games.php?id=$1" [NC,L]
+RewriteRule "^users/?$" "users.php" [NC,L]
+RewriteRule "^users/([0-9]+)/?$" "users.php?id=$1" [NC,L]

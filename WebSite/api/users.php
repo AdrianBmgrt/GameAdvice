@@ -11,9 +11,12 @@ function returnResponse($response)
     echo json_encode($response);
 }
 
-//var_dump($resultCheckRequestMethod);
 switch ($request_method) {
     case 'GET':
+        if (isset($_GET["description"])) {
+            var_dump($_GET["description"]);
+        }
+
         // Retrive Products
         if (!empty($_GET["id"])) {
             $id = intval($_GET["id"]);
@@ -22,13 +25,15 @@ switch ($request_method) {
             returnResponse(readUsers());
         }
         break;
-
     case 'POST':
-        $nom = $_POST["nom"];
-        $prenom = $_POST["prenom"];
-        $email = $_POST["email"];
-        $mdp = $_POST["mdp"];
-        $photoProfil = $_POST["photoProfil"];
+        $json = file_get_contents('php://input');
+        $data = json_decode($json);
+
+        $nom = $data->nom;
+        $prenom = $data->prenom;
+        $email = $data->email;
+        $mdp = $data->mdp;
+        $photoProfil = $data->photoProfil;
 
         if (createUser($nom, $prenom, $email, $mdp, $photoProfil)) {
             $response = array(
@@ -39,14 +44,38 @@ switch ($request_method) {
                 "status_message" => "User Addition Failed."
             );
         }
+        var_dump($nom);
+        var_dump($prenom);
+        var_dump($email);
+        var_dump($mdp);
+        var_dump($photoProfil);
         ReturnResponse($response);
         break;
     case 'PUT':
-        // CODE ICI
+        $id = intval($_GET["id"]);
+        $json = file_get_contents('php://input');
+        $data = json_decode($json);
+
+        $nom = $data->nom;
+        $prenom = $data->prenom;
+        $email = $data->email;
+        $mdp = $data->mdp;
+        $photoProfil = $data->photoProfil;
+
+        if (updateGame($id, $nom, $prenom, $email, $mdp, $photoProfil)) {
+            $response = array(
+                "status_message" => "Game updated Successfully."
+            );
+        } else {
+            $response = array(
+                "status_message" => "Game update Failed."
+            );
+        }
+        ReturnResponse($response);
         break;
     case 'DELETE':
         $id = intval($_GET["id"]);
-        if (deleteUser($id)) {
+        if (deleteGame($id)) {
             $response = array(
                 "status_message" => "Game Deleted Successfully."
             );
