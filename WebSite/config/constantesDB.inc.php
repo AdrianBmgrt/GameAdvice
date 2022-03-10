@@ -10,10 +10,6 @@
 define("HOSTNAME", "localhost");
 define("DBNAME", "dbGameAdvice");
 define("DBUSER", "root");
-<<<<<<< Updated upstream
-define("PASSWORD", "Superr");
-=======
 define("PASSWORD", "ge19se04");
->>>>>>> Stashed changes
 
 ?>
