@@ -90,7 +90,7 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Login</h3>
-                        <form id="form_id" name="myform">
+                        <form id="form_id" method="post" name="myform">
                             <div class="input__item">
                                 <input type="text" placeholder="Email address" name="email" id="email" required>
                                 <span class="icon_mail"></span>
@@ -101,7 +101,8 @@
                             </div>
                             <span id="message"></span>
                             <br>
-                            <input class="site-btn" id="login" onclick="apiGET()" value="Login Now" readonly>
+                            <button type="submit" class="site-btn" id="submit" onclick="validate()">Login Now</button>
+                            <button class="site-btn" onclick='login()'>Login API</button>
                         </form>
                     </div>
                 </div>
@@ -174,7 +175,7 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/login.js"></script>
+    <script src="js/recuperationDonne.js"></script>
 
 
 
