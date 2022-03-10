@@ -30,7 +30,9 @@
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
-              console.log("erreur tu es movais joser")
+                console.log(xhr);
+                console.log(textStatus);
+                console.log(errorThrown);
             }
         });
     });
