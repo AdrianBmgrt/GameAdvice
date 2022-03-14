@@ -14,7 +14,7 @@
                         html += "<div class=\"col-lg-4 col-md-6 col-sm-6\">";
                         html += "<div class=\"product__item\">";
                         html += "<div class=\"product__item__pic set-bg\" data-setbg=\"img/jeuImg/" + data[index].image + "\" style='background-image: url(\"img/jeuImg/" + data[index].image + "\");'>";
-                        html += "<div class=\"ep\">18 / 18</div>";
+                        html += "<div class=\"ep\">20 / 20</div>";
                         html += "<div class=\"comment\"><i class=\"fa fa-comments\"></i> 11</div>";
                         html += "<div class=\"view\"><i class=\"fa fa-money\"></i> " + data[index].prix + " CHF </div>";
                         html += "</div>";
