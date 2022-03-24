@@ -1,4 +1,8 @@
 <?php
+/*
+* Nom: Adrian Baumgartner 
+* Description : Page oû j'ai créer mon API concernant les utilisateur  
+*/
 
 require "../config/boiteaoutils.inc.php";
 
@@ -13,13 +17,7 @@ function returnResponse($response)
 
 switch ($request_method) {
     case 'GET':
-        /*
-        $email = $_GET["email"];
-        if (!empty($_GET["email"])) {
-            returnResponse(readUserByEmail($email));
-        }
-*/
-        // Retrive Products
+        
         if (!empty($_GET["id"])) {
             $id = intval($_GET["id"]);
             returnResponse(readUser($id));

@@ -1,4 +1,8 @@
 <?php
+/*
+* Nom: Adrian Baumgartner 
+* Description : Page oû j'ai créer mon API concernant les jeux  
+*/
 
 require "../config/boiteaoutils.inc.php";
 
@@ -10,6 +14,7 @@ function returnResponse($response)
     header("Content-Type: application/json");
     echo json_encode($response);
 }
+
 
 switch ($request_method) {
     case 'GET':
