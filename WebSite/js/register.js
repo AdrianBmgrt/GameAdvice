@@ -1,18 +1,23 @@
 function register() {
+    //recuperre valeur input
     var email = document.getElementById('email').value;
     var nom = document.getElementById('nom').value;
     var prenom = document.getElementById('prenom').value;
     var password = document.getElementById('password').value;
     var passwordConfirm = document.getElementById('passwordConfirm').value;
 
+    //verification valeur des input
     if (email != "" && nom != "" && prenom != "" && password != "" && passwordConfirm != "") {
         if (password == passwordConfirm) {
             var utilisateur = { nom: nom, prenom: prenom, email: email, mdp: password, photoProfil: "" };
             console.log(utilisateur);
 
             $.ajax({
+                //url api
                 url: 'http://localhost/GameAdvice/WebSite/api/users.php',
+                //type POST ajout de valeur
                 type: 'POST',
+                //ajout des valeur pour envoyer a la l'api
                 data: JSON.stringify(utilisateur),
                 async: false, // enable or disable async (optional, but suggested as false if you need to populate data afterwards)
                 success: function(data, textStatus, jqXHR) {
@@ -30,6 +35,10 @@ function register() {
     }
 
 }
+
+
+//TEST
+
 /*
 var formData = { name: "John", surname: "Doe", age: "31" }; //Array 
 $.ajax({
