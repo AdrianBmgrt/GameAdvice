@@ -12,6 +12,7 @@ function deconnection() {
 
 //Recuperation de données de l'api pour les utilisateurs
 function apiGET() {
+    //recuperation des valeur dans le input
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     $.ajax({
@@ -33,12 +34,11 @@ function apiGET() {
                 }
 
             }
-            // alert(document.cookie);
+            //redirection
             location.replace("index.html");
 
         },
         error: function(jqXHR, textStatus, errorThrown) {
-
             if (errorThrown == "Unauthorized") {
                 document.getElementById("errorMessageConnection").innerHTML = "Le mot de passe et/ou l'email ne correspondent pas";
             } else {
