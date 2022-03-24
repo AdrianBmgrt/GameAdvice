@@ -1,4 +1,8 @@
 //TEST AJAX
+/**
+ * Auteur: Georges
+ * Description: test d'ajax
+ */
 
 
 /*function setCookie(name, content, expireDays) { //Fonction empruntée à w3schools https://www.w3schools.com/js/js_cookies.asp

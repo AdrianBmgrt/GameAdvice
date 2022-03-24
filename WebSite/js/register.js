@@ -1,3 +1,9 @@
+/**
+ * Auteur: Georges
+ * Description: Script permettant l'envoie api pour la page register
+ */
+
+
 function register() {
     //recuperre valeur input
     var email = document.getElementById('email').value;
@@ -11,7 +17,7 @@ function register() {
         if (password == passwordConfirm) {
             var utilisateur = { nom: nom, prenom: prenom, email: email, mdp: password, photoProfil: "" };
             console.log(utilisateur);
-
+            //ajax
             $.ajax({
                 //url api
                 url: 'http://localhost/GameAdvice/WebSite/api/users.php',

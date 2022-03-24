@@ -1,3 +1,8 @@
+/**
+ * Auteur: José, Georges, Adrian
+ * Description: Recuperation des données de l'api pour l'affichage à la page accueil
+ */
+
 //afficher de l'accueil a l'aide des valeur de l'api
 $(document).ready(function() {
     $.ajax({
