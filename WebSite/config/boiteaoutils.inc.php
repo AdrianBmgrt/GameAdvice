@@ -230,7 +230,7 @@ function readUserByEmail($email)
 {
     static $ps = null;
     $sql = 'SELECT u.nom, u.prenom, u.email, u.mdp, u.photoProfil ';
-    $sql .= ' FROM GameAdvice.Users as u ';
+    $sql .= ' FROM dbGameAdvice.Users as u ';
     $sql .= ' WHERE email = :EMAIL';
 
     if ($ps == null) {

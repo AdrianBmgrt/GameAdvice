@@ -30,7 +30,7 @@ function apiGET() {
 
             }
             // alert(document.cookie);
-            //location.replace("profil.html");
+            location.replace("index.html");
 
         },
         error: function(jqXHR, textStatus, errorThrown) {
