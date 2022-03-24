@@ -89,24 +89,28 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Sign Up</h3>
-                        <form action="#">
+                        <form id="form_id" name="myform">
                             <div class="input__item">
-                                <input type="text" placeholder="Email address">
+                                <input type="text" id="email" placeholder="Email address">
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item text-center">
-                                <input type="text" placeholder="Your Name">
+                                <input type="text" id="nom" placeholder="Your Name">
+                                <span class="icon_profile"></span>
+                            </div>
+                            <div class="input__item text-center">
+                                <input type="text" id="prenom" placeholder="Your Prenom">
                                 <span class="icon_profile"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Password">
+                                <input type="text" id="password" placeholder="Password">
                                 <span class="icon_lock"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Password Confirm">
+                                <input type="text" id="passwordConfirm" placeholder="Password Confirm">
                                 <span class="icon_lock"></span>
                             </div>
-                            <button type="submit" class="site-btn">Registe Now</button>
+                            <input class="site-btn" id="submit" onclick="register()" value="Login Now" readonly><br>
                         </form>
                     </div>
                 </div>
@@ -182,6 +186,7 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/register.js"></script>
 
 </body>
 

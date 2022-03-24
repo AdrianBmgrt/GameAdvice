@@ -13,13 +13,13 @@ require "constantesDB.inc.php";
  * @staticvar PDO $dbc
  * @return \PDOO
  */
-function dbGameAdvice()
+function GameAdvice()
 {
-    static $dbGameAdviceConn = null;
+    static $GameAdviceConn = null;
 
-    if ($dbGameAdviceConn == null) {
+    if ($GameAdviceConn == null) {
         try {
-            $dbGameAdviceConn = new PDO('mysql: ' . DBNAME . ';hostname= ' . HOSTNAME, DBUSER, PASSWORD, array(
+            $GameAdviceConn = new PDO('mysql: ' . DBNAME . ';hostname= ' . HOSTNAME, DBUSER, PASSWORD, array(
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
                 PDO::ATTR_PERSISTENT => true
             ));
@@ -31,7 +31,7 @@ function dbGameAdvice()
             die('Could not connect to MySQL');
         }
     }
-    return $dbGameAdviceConn;
+    return $GameAdviceConn;
 }
 
 /*
@@ -43,11 +43,11 @@ function readGame($idGame)
 {
     static $ps = null;
     $sql = 'SELECT nom, description, dateDeSortie, prix, image';
-    $sql .= ' FROM dbGameAdvice.Games';
+    $sql .= ' FROM GameAdvice.Games';
     $sql .= ' WHERE idGame = :IDGAME';
 
     if ($ps == null) {
-        $ps = dbGameAdvice()->prepare($sql);
+        $ps = GameAdvice()->prepare($sql);
     }
     $answer = false;
     try {
@@ -70,11 +70,11 @@ function readUserByEmail($email)
 {
     static $ps = null;
     $sql = 'SELECT u.nom, u.prenom, u.email, u.mdp, u.photoProfil ';
-    $sql .= ' FROM dbGameAdvice.Users as u ';
+    $sql .= ' FROM GameAdvice.Users as u ';
     $sql .= ' WHERE email = :EMAIL';
 
     if ($ps == null) {
-        $ps = dbGameAdvice()->prepare($sql);
+        $ps = GameAdvice()->prepare($sql);
     }
     $answer = false;
     try {
@@ -92,10 +92,10 @@ function readGames()
 {
     static $ps = null;
     $sql = 'SELECT g.nom, g.description, g.dateDeSortie, g.prix, g.image';
-    $sql .= ' FROM dbGameAdvice.Games as g';
+    $sql .= ' FROM GameAdvice.Games as g';
 
     if ($ps == null) {
-        $ps = dbGameAdvice()->prepare($sql);
+        $ps = GameAdvice()->prepare($sql);
     }
     $answer = false;
     try {
@@ -111,11 +111,11 @@ function readUser($idUser)
 {
     static $ps = null;
     $sql = 'SELECT u.nom, u.prenom, u.email, u.mdp, u.photoProfil';
-    $sql .= ' FROM dbGameAdvice.Users as u';
+    $sql .= ' FROM GameAdvice.Users as u';
     $sql .= ' WHERE idUser = :IDUSER';
 
     if ($ps == null) {
-        $ps = dbGameAdvice()->prepare($sql);
+        $ps = GameAdvice()->prepare($sql);
     }
     $answer = false;
     try {
@@ -132,10 +132,10 @@ function readUsers()
 {
     static $ps = null;
     $sql = 'SELECT u.nom, u.prenom, u.email, u.mdp, u.photoProfil';
-    $sql .= ' FROM dbGameAdvice.Users as u';
+    $sql .= ' FROM GameAdvice.Users as u';
 
     if ($ps == null) {
-        $ps = dbGameAdvice()->prepare($sql);
+        $ps = GameAdvice()->prepare($sql);
     }
     $answer = false;
     try {
@@ -157,10 +157,10 @@ function readUsers()
 function createUser($nom, $prenom, $email, $mdp, $photoProfil)
 {
     static $ps = null;
-    $sql = "INSERT INTO `dbGameAdvice`.`Users` (`nom`, `prenom`, `email`, `mdp`, `photoProfil`) ";
+    $sql = "INSERT INTO `GameAdvice`.`Users` (`nom`, `prenom`, `email`, `mdp`, `photoProfil`) ";
     $sql .= "VALUES (:NOM, :PRENOM, :EMAIL, :MDP, :PHOTOPROFIL)";
     if ($ps == null) {
-        $ps = dbGameAdvice()->prepare($sql);
+        $ps = GameAdvice()->prepare($sql);
     }
     $answer = false;
     try {
@@ -187,7 +187,7 @@ function updateUser($idUser, $nom, $prenom, $email, $mdp, $photoProfil)
 {
     static $ps = null;
 
-    $sql = "UPDATE `dbGameAdvice`.`Users` SET ";
+    $sql = "UPDATE `GameAdvice`.`Users` SET ";
     $sql .= "`nom` = :NOM, ";
     $sql .= "`prenom` = :PRENOM, ";
     $sql .= "`email` = :EMAIL, ";
@@ -195,7 +195,7 @@ function updateUser($idUser, $nom, $prenom, $email, $mdp, $photoProfil)
     $sql .= "`photoProfil` = :PHOTOPROFIL ";
     $sql .= "WHERE (`idUser` = :IDUSER)";
     if ($ps == null) {
-        $ps = dbGameAdvice()->prepare($sql);
+        $ps = GameAdvice()->prepare($sql);
     }
     $answer = false;
     try {
@@ -223,10 +223,10 @@ function updateUser($idUser, $nom, $prenom, $email, $mdp, $photoProfil)
 function createGame($nom, $dateDeSortie, $description, $prix, $image)
 {
     static $ps = null;
-    $sql = "INSERT INTO `dbGameAdvice`.`Games` (`nom`, `dateDeSortie`, `description`, `prix`, `image`) ";
+    $sql = "INSERT INTO `GameAdvice`.`Games` (`nom`, `dateDeSortie`, `description`, `prix`, `image`) ";
     $sql .= "VALUES (:NOM, :DATEDESORTIE, :DESCRIPTION, :PRIX, :IMAGE)";
     if ($ps == null) {
-        $ps = dbGameAdvice()->prepare($sql);
+        $ps = GameAdvice()->prepare($sql);
     }
     $answer = false;
     try {
@@ -253,7 +253,7 @@ function updateGame($idGame, $nom, $dateDeSortie, $description, $prix, $image)
 {
     static $ps = null;
 
-    $sql = "UPDATE `dbGameAdvice`.`Games` SET ";
+    $sql = "UPDATE `GameAdvice`.`Games` SET ";
     $sql .= "`nom` = :NOM, ";
     $sql .= "`dateDeSortie` = :DATEDESORTIE, ";
     $sql .= "`description` = :DESCRIPTION, ";
@@ -261,7 +261,7 @@ function updateGame($idGame, $nom, $dateDeSortie, $description, $prix, $image)
     $sql .= "`image` = :IMAGE ";
     $sql .= "WHERE (`idGame` = :IDGAME)";
     if ($ps == null) {
-        $ps = dbGameAdvice()->prepare($sql);
+        $ps = GameAdvice()->prepare($sql);
     }
     $answer = false;
     try {
@@ -287,9 +287,9 @@ function updateGame($idGame, $nom, $dateDeSortie, $description, $prix, $image)
 function deleteGame($idGame)
 {
     static $ps = null;
-    $sql = "DELETE FROM `dbGameAdvice`.`Games` WHERE (`idGame` = :IDGAME);";
+    $sql = "DELETE FROM `GameAdvice`.`Games` WHERE (`idGame` = :IDGAME);";
     if ($ps == null) {
-        $ps = dbGameAdvice()->prepare($sql);
+        $ps = GameAdvice()->prepare($sql);
     }
     $answer = false;
     try {
@@ -310,9 +310,9 @@ function deleteGame($idGame)
 function deleteUser($idUser)
 {
     static $ps = null;
-    $sql = "DELETE FROM `dbGameAdvice`.`Users` WHERE (`idUser` = :IDUSER);";
+    $sql = "DELETE FROM `GameAdvice`.`Users` WHERE (`idUser` = :IDUSER);";
     if ($ps == null) {
-        $ps = dbGameAdvice()->prepare($sql);
+        $ps = GameAdvice()->prepare($sql);
     }
     $answer = false;
     try {
