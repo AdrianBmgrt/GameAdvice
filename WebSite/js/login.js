@@ -15,6 +15,7 @@ function apiGET() {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     $.ajax({
+        //type GET qui permet la recuperation des données
         type: "GET",
         url: `http://localhost/GameAdvice/WebSite/api/users.php`,
         cache: false,
