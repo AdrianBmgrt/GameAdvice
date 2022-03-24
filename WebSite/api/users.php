@@ -6,6 +6,7 @@
 
 require "../config/boiteaoutils.inc.php";
 
+// Permet de récupérer la méthode HTTP
 $request_method = $_SERVER["REQUEST_METHOD"];
 
 function returnResponse($response)
@@ -15,6 +16,7 @@ function returnResponse($response)
     echo json_encode($response);
 }
 
+// API REST concernant les utilisateurs
 switch ($request_method) {
     case 'GET':
         
